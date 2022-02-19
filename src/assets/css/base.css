@@ -1,0 +1,146 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: SFUIText, PingFangSC-Regular, Helvetica Neue, Helvetica, Arial, sans-serif;
+    user-select: none; /* 禁止用户鼠标在页面上选中文字/图片等 */
+    -webkit-tap-highlight-color: transparent; /* webkit是苹果浏览器引擎，tap点击，highlight背景高亮，color颜色，颜色用数值调节 */
+    width: 100vw;
+    font-weight: 400;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    /*min-height: 700px;*/
+    height: 100%;
+}
+
+.icon {
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+}
+
+img {
+    -webkit-user-drag: none;
+}
+
+input {
+    background: none;
+    outline: none;
+    border: 1px solid #ccc;
+}
+
+input:focus {
+    border: none;
+}
+
+*::-webkit-scrollbar {
+    width: 6px;
+    height: 10px;
+}
+
+*::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: rgba(85, 85, 85, .3);
+}
+
+*::-webkit-scrollbar-track {
+    border-radius: 0;
+    background: none;
+}
+
+.file-list {
+    height: 100%;
+    position: relative;
+}
+
+.file-list-table .list-name .text:hover {
+    color: #46a7ff;
+}
+
+.file-list-table .list-name .text {
+    color: #05082c;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block;
+    cursor: pointer;
+    padding: 10px 0 10px 4px;
+}
+
+.file-list-table .body .selected {
+    background: #f0faff !important;
+}
+
+.file-list-table .list-name {
+    display: flex;
+    align-items: center;
+}
+
+.file-list-table .list-name img {
+    height: 40px;
+    width: 40px;
+}
+
+.file-list-table {
+    margin-left: -18px;
+    margin-right: -20px;
+    height: calc(100% - 78px);
+}
+
+.file-list-table .is-select {
+    padding-left: 18px;
+    padding-right: 2px;
+    text-align: center;
+}
+
+.file-list-table tr {
+    height: 50px;
+    border-bottom: 1px solid #f9f9f9;
+    text-align: left;
+    font-size: 12px;
+}
+
+.file-list-table .header tr {
+    color: #03081a;
+}
+
+.file-list-table .body tr {
+    color: #afb3bf;
+}
+
+.file-list-table table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.file-list-table .body tr:hover {
+    background-color: #fafafc;
+}
+
+.file-list-table .body tr:hover .m-checkbox-span {
+    border: #46a7ff solid 1px;
+}
+
+.file-list-table .header tr th {
+    cursor: pointer;
+}
+
+.file-list-table .body {
+    overflow: hidden;
+    height: calc(100% - 54px);
+    overflow-y: auto;
+}
+
+.expiring-soon {
+    color: #ff8080;
+}
+
+

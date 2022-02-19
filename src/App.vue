@@ -1,30 +1,35 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div>
+  <disk-nav-bar v-if="$route.path!=='/auth'"/>
   <router-view/>
 </template>
 
+<script>
+
+import DiskNavBar from "@/components/navBar/DiskNavBar";
+import {getUserInfo} from "@/api/user";
+
+export default {
+  name: 'App',
+  components: {DiskNavBar},
+  mounted() {
+    const token = localStorage.getItem("authorization")
+    if (token) {
+      const tokenBody = JSON.parse(decodeURIComponent(escape(window.atob(token.split('.')[1]))));
+      const now = new Date().getTime() / 1000
+      if (tokenBody.exp < now) {
+        localStorage.removeItem('authorization')
+        return
+      }
+      this.$store.commit('toggleLoginStatus', true)
+      getUserInfo()
+          .then(res => {
+            this.$store.commit('updateUserInfo', res.data)
+          })
+    }
+  }
+}
+</script>
+
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
+@import "assets/css/base.css";
 </style>
